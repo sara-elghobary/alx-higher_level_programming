@@ -21,7 +21,8 @@ class Square:
 
         Raises:
         - TypeError: If the provided size is not an integer.
-                     If the provided position is not a tuple of two positive integers.
+                     If the provided position is not a tuple
+                     of two positive integers.
         - ValueError: If the provided size is less than 0.
         """
         self.size = size
@@ -70,7 +71,8 @@ class Square:
         - value (tuple): The position of the square.
 
         Raises:
-        - TypeError: If the provided position is not a tuple of two positive integers.
+        - TypeError: If the provided position is not a
+        tuple of two positive integers.
         """
         if not isinstance(value, tuple) or len(value) != 2 or \
                 not all(isinstance(val, int) and val >= 0 for val in value):
@@ -92,7 +94,8 @@ class Square:
         Prints the square with the character # and considering the position.
 
         If size is equal to 0, prints an empty line.
-        Position should be used by using space - Don’t fill lines by spaces when position[1] > 0.
+        Position should be used by using space - Don’t
+        fill lines by spaces when position[1] > 0.
         """
         if self.__size == 0:
             print()
