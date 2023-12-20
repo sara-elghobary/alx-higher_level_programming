@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
 This module defines a class Square with a private instance attribute,
-size verification, and a public instance method for calculating the area.
+properties for getting and setting the size, and a public instance method for
+calculating the area.
 """
 
 
@@ -13,17 +14,39 @@ class Square:
     def __init__(self, size=0):
         """
         Initializes the square with an optional size.
-        """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
 
-        if size < 0:
-            raise ValueError("size must be >= 0")
+        Parameters:
+        - size (int): The size of the square. Default is 0.
 
-        self.__size = size
+        Raises:
+        - TypeError: If the provided size is not an integer.
+        - ValueError: If the provided size is less than 0.
+        """
+        self.size = size
 
-    def area(self):
+    @property
+    def size(self):
         """
-        Calculates and returns the area of the square.
+        Getter method for retrieving the size.
         """
-        return self.__size ** 2
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        """
+        Setter method for setting the size.
+
+        Parameters:
+        - value (int): The size of the square.
+
+        Raises:
+        - TypeError: If the provided size is not an integer.
+        - ValueError: If the provided size is less than 0.
+        """
+        if not isinstance(value, int):
+            raise TypeError('size must be an integer')
+
+        if value < 0:
+            raise ValueError('size must be >= 0')
+
+        self.__size = value
