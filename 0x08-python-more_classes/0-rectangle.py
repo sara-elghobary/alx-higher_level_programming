@@ -7,8 +7,8 @@ This module defines an empty class Rectangle.
 class Rectangle:
 
     """
-    This class represents a square.
+    This class represents a Rectangle.
     It is currently empty.
     """
 
-    pass:
+    pass
