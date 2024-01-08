@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def text_indentation(text):
     # Check if text is a string
     if not isinstance(text, str):
