@@ -2,6 +2,7 @@
 '''Module for Rectangle class.'''
 from models.base import Base
 
+
 class Rectangle(Base):
     """Rectangle class that inherits from Base"""
 
@@ -9,11 +10,11 @@ class Rectangle(Base):
         """Rectangle class constructor"""
 
         super().__init__(id)
-        self.width=width
-        self.height=height
-        self.x=x
-        self.y=0
-        self.id=id
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = 0
+        self.id = id
 
     @property
     def width(self):
@@ -63,11 +64,11 @@ class Rectangle(Base):
             raise ValueError("{} must be >= 0".format(name))
         elif not eq and value <= 0:
             raise ValueError("{} must be > 0".format(name))
-        
+
     def area(self):
         '''Computes area of this rectangle.'''
         return self.width * self.height
-    
+
     def display(self):
         """Display the Rectangle instance with '#' characters"""
 
@@ -82,7 +83,7 @@ class Rectangle(Base):
         return '[{}] ({}) {}/{} - {}/{}'.\
             format(type(self).__name__, self.id, self.x, self.y, self.width,
                    self.height)
-    
+
     def update(self, *args, **kwargs):
         # Update using positional arguments if they exist and are not empty
         if args:
@@ -99,4 +100,8 @@ class Rectangle(Base):
             self.height = kwargs.get('height', self.height)
             self.x = kwargs.get('x', self.x)
             self.y = kwargs.get('y', self.y)
- 
+
+    def to_dictionary(self):
+        '''Returns dictionary representation of this class.'''
+        return {"id": self.id, "width": self.__width, "height": self.__height,
+                "x": self.__x, "y": self.__y}
