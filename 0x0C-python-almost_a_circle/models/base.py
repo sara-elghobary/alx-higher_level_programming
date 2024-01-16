@@ -1,18 +1,16 @@
 #!/usr/bin/python3
-
-
-import csv
+'''Module for Base class.'''
 from json import dumps, loads
+import csv
 
 
 class Base:
-    """Base class with private class attribute __nb_objects"""
+    '''A representation of the base of our OOP hierarchy.'''
 
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Class constructor for Base"""
-
+        '''Constructor.'''
         if id is not None:
             self.id = id
         else:
@@ -102,3 +100,29 @@ class Base:
                          "x": row[2], "y": row[3]}
                 ret.append(cls.create(**d))
         return ret
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        import turtle
+        import time
+        from random import randrange
+        turtle.Screen().colormode(255)
+        for i in list_rectangles + list_squares:
+            t = turtle.Turtle()
+            t.color((randrange(255), randrange(255), randrange(255)))
+            t.pensize(1)
+            t.penup()
+            t.pendown()
+            t.setpos((i.x + t.pos()[0], i.y - t.pos()[1]))
+            t.pensize(10)
+            t.forward(i.width)
+            t.left(90)
+            t.forward(i.height)
+            t.left(90)
+            t.forward(i.width)
+            t.left(90)
+            t.forward(i.height)
+            t.left(90)
+            t.end_fill()
+
+        time.sleep(5)

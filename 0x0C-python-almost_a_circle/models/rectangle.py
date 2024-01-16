@@ -4,17 +4,15 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """Rectangle class that inherits from Base"""
+    '''A Rectangle class.'''
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Rectangle class constructor"""
-
+        '''Constructor.'''
         super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
-        self.y = 0
-        self.id = id
+        self.y = y
 
     @property
     def width(self):
@@ -70,13 +68,10 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """Display the Rectangle instance with '#' characters"""
-
-        for _ in range(self.y):
-            print()
-
-        for _ in range(self.height):
-            print(" " * self.x + "#" * self.width)
+        '''Prints string representation of this rectangle.'''
+        s = '\n' * self.y + \
+            (' ' * self.x + '#' * self.width + '\n') * self.height
+        print(s, end='')
 
     def __str__(self):
         '''Returns string info about this rectangle.'''
@@ -84,22 +79,26 @@ class Rectangle(Base):
             format(type(self).__name__, self.id, self.x, self.y, self.width,
                    self.height)
 
+    def __update(self, id=None, width=None, height=None, x=None, y=None):
+        '''Internal method that updates instance attributes via */**args.'''
+        if id is not None:
+            self.id = id
+        if width is not None:
+            self.width = width
+        if height is not None:
+            self.height = height
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
+
     def update(self, *args, **kwargs):
-        # Update using positional arguments if they exist and are not empty
+        '''Updates instance attributes via no-keyword & keyword args.'''
+        # print(args, kwargs)
         if args:
-            # Assign values based on the number of arguments
-            self.id = args[0] if len(args) >= 1 else self.id
-            self.width = args[1] if len(args) >= 2 else self.width
-            self.height = args[2] if len(args) >= 3 else self.height
-            self.x = args[3] if len(args) >= 4 else self.x
-            self.y = args[4] if len(args) >= 5 else self.y
-        else:
-            # Update using keyword arguments
-            self.id = kwargs.get('id', self.id)
-            self.width = kwargs.get('width', self.width)
-            self.height = kwargs.get('height', self.height)
-            self.x = kwargs.get('x', self.x)
-            self.y = kwargs.get('y', self.y)
+            self.__update(*args)
+        elif kwargs:
+            self.__update(**kwargs)
 
     def to_dictionary(self):
         '''Returns dictionary representation of this class.'''
