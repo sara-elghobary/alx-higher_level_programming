@@ -7,8 +7,10 @@ if (isNaN(number)) {
   console.log('Missing size');
 } else {
   for (let i = 0; i < number; i++) {
+    let line = '';
     for (let j = 0; j < number; j++) {
-      console.log('X');
+      line += 'X';
     }
+    console.log(line);
   }
 }
