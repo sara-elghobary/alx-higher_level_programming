@@ -8,3 +8,5 @@ function add (a, b) {
     console.log('NaN');
   }
 }
+
+add(process.argv[2], process.argv[3]);
