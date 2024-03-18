@@ -1,6 +1,5 @@
 #!/usr/bin/node
 
-// 10-factorial.js
 function factorial (n) {
   if (n === 0 || isNaN(n)) {
     return 1;
