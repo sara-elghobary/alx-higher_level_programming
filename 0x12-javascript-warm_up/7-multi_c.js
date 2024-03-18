@@ -1,14 +1,13 @@
 #!/usr/bin/node
+// prints 3 lines: (like 1-multi_languages.js) but by
+// using an array of string and a loop
 
-const arg = process.argv[2];
-const number = parseInt(arg);
+const lang = 'C is fun';
 
-if (isNaN(number)) {
+if (isNaN(process.argv[2])) {
   console.log('Missing number of occurrences');
 } else {
-  if (number > 1) {
-    for (let i = 0; i < number; i++) {
-      console.log('C is fun');
-    }
+  for (let i = 0; i < parseInt(process.argv[2]); i++) {
+    console.log(lang);
   }
 }
